@@ -9,9 +9,7 @@ function isBase64(str) {
   
   const base64Pattern = /^data:image\/(jpeg|png|gif|bmp|webp|tiff|svg\+xml);base64,[A-Za-z0-9+/]+={0,2}$/;
 
-  const isMatch = base64Pattern.test(str);
-  console.log('Is Base64 valid:', isMatch); // Debugging line
-  return isMatch;
+  return base64Pattern.test(str);
 }
 
 router.post('/get-text',  async (req, res) => {
@@ -40,7 +38,6 @@ router.post('/get-text',  async (req, res) => {
           fs.unlinkSync(tempImagePath);
           fs.unlinkSync(`${outputFilePath}.txt`);
 
-          // Send extracted text
           res.json({success: true ,text: data });
       });
   });
@@ -62,23 +59,22 @@ router.post('/get-bboxes', async (req, res) => {
       const { base64_image, bbox_type } = req.body;
 
 
-      // Set PSM value based on the requested type
       let psmValue;
       switch (bbox_type) {
           case 'word':
-              psmValue = 6; // Assume a single uniform block of text
+              psmValue = 6;
               break;
           case 'line':
-              psmValue = 4; // Assume a single line of text
+              psmValue = 4; 
               break;
           case 'paragraph':
-              psmValue = 1; // Assume a single column of text
+              psmValue = 1; 
               break;
           case 'block':
-              psmValue = 3; // Assume a block of text
+              psmValue = 3; 
               break;
           case 'page':
-              psmValue = 3; // Use the default page segmentation
+              psmValue = 3; 
               break;
           default:
             return res.json({
@@ -89,13 +85,11 @@ router.post('/get-bboxes', async (req, res) => {
           });
       }
 
-      // Download the image from the URL
       const response = await fetch(base64_image);
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
       const tempImagePath = path.join(__dirname, 'temp_image.jpg');
 
-      // Check if content type is text-based (indicates it might be encoded in Base64)
       if (isBase64(base64_image)) {
         fs.writeFileSync(tempImagePath, buffer);
 
@@ -111,7 +105,6 @@ router.post('/get-bboxes', async (req, res) => {
               });
             }
   
-            // Read the output HTML with bounding box information
             fs.readFile(`${outputFilePath}.hocr`, 'utf8', (err, data) => {
                 if (err) {
                     console.error(err);
@@ -153,7 +146,6 @@ router.post('/get-bboxes', async (req, res) => {
             }
         });
       }
-      // Save the image temporarily
       
   } catch (error) {
       console.error(error);return res.json({
