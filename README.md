@@ -26,4 +26,7 @@ The application utilizes the child_process module to execute the Tesseract comma
    # Some Screenshot
     ![image](https://github.com/user-attachments/assets/fc4ea114-d404-4708-a87b-0399c5fea7a5)
 
+   # Short video
+   https://youtu.be/L2mfcOuK-gc?feature=shared
+
    
