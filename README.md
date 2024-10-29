@@ -9,7 +9,7 @@ The application utilizes the child_process module to execute the Tesseract comma
 
 # Installation Instructions
 1. first we have to clone the project and then install the dependencies.  
-   ```git clone ""```    
+   ```git clone "https://github.com/akshaytyagi482/iit-tesseract-api.git"```    
    ```npm install ```   
 2. now download the tesseract ocr v5 binary from the given link and setup it on your system.  
    [Tesseract ocr v5](https://github.com/UB-Mannheim/tesseract/wiki)
