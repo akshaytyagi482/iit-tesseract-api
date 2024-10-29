@@ -14,8 +14,8 @@ The application utilizes the child_process module to execute the Tesseract comma
 2. now download the tesseract ocr v5 binary from the given link and setup it on your system.  
    [Tesseract ocr v5](https://github.com/UB-Mannheim/tesseract/wiki)
 3. After installation and setup is done. now create a .env file and add two attributes in it  
-   ``` tesspath = ""
-   PORT = 3000```
+   ``` tesspath = "" ```
+ ```  PORT = 3000```
 4. In the tesspath you have to give the path to your tesseract ocr along with /tesseract.exe at the end.
    ![image](https://github.com/user-attachments/assets/b8c4c3b2-e923-4e53-a025-7bbc4583574d)
    ![image](https://github.com/user-attachments/assets/faf924b0-054e-4aa0-9192-e3a1d32a2b76)
